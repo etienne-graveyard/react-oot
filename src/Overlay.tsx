@@ -1,7 +1,7 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { OverlayContext } from './OverlayContext';
 import { useOverlay } from './useOverlay';
-import ReactDOM from 'react-dom';
 import { usePortal } from './usePortal';
 import { invariantOverlayContext } from './utils';
 

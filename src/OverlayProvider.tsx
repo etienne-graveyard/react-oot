@@ -41,7 +41,9 @@ export const OverlayProvider: React.FC<Props> = ({ children }) => {
 
   return (
     <OverlayManagerContext.Provider value={manager}>
-      <OverlayContext.Provider value={manager.getRootToken()}>{children}</OverlayContext.Provider>
+      <OverlayContext.Provider value={manager.getRootToken()}>
+        {children}
+      </OverlayContext.Provider>
     </OverlayManagerContext.Provider>
   );
 };
