@@ -1,6 +1,7 @@
 {
   "include": ["src", "types", "test"],
   "compilerOptions": {
+    "outDir": "build",
     "target": "es5",
     "module": "esnext",
     "lib": ["dom", "esnext"],

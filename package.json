@@ -1,6 +1,6 @@
 {
   "name": "react-oot",
-  "version": "0.1.0",
+  "version": "1.0.0-alpha.0",
   "license": "MIT",
   "author": "Etienne Dldc",
   "main": "dist/index.js",
@@ -13,7 +13,8 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
-    "lint": "tsdx lint"
+    "lint": "tsdx lint",
+    "pub": "npx np"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -39,5 +40,8 @@
     "tsdx": "^0.11.0",
     "tslib": "^1.10.0",
     "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "cuid": "^2.1.6"
   }
 }
