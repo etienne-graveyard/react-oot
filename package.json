@@ -14,7 +14,7 @@
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint",
-    "pub": "npx np"
+    "pub": "np"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -35,6 +35,7 @@
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
     "husky": "^3.0.9",
+    "np": "^5.1.3",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "tsdx": "^0.11.0",
@@ -43,5 +44,19 @@
   },
   "dependencies": {
     "cuid": "^2.1.6"
-  }
+  },
+  "description": "",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etienne-dldc/react-oot.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/etienne-dldc/react-oot/issues"
+  },
+  "homepage": "https://github.com/etienne-dldc/react-oot#readme"
 }
