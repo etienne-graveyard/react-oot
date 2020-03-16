@@ -15,7 +15,10 @@ interface Options {
   onClose?: (event: MouseEvent | KeyboardEvent) => void;
 }
 
-export function useOverlay(container: HTMLDivElement, options: Options = {}): Result {
+export function useOverlay(
+  container: HTMLDivElement,
+  options: Options = {}
+): Result {
   const {
     debugName = '',
     canEscapeKeyClose = true,
@@ -39,7 +42,15 @@ export function useOverlay(container: HTMLDivElement, options: Options = {}): Re
       onClose
     );
     unregisterRef.current = unregister;
-  }, [canEscapeKeyClose, canOutsideClickClose, container, manager, onClose, parent, token]);
+  }, [
+    canEscapeKeyClose,
+    canOutsideClickClose,
+    container,
+    manager,
+    onClose,
+    parent,
+    token,
+  ]);
 
   React.useEffect(() => {
     return () => {
