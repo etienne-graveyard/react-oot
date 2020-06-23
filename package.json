@@ -25,14 +25,14 @@
   ],
   "scripts": {
     "build": "tsdx build",
-    "lint": "tsdx lint",
+    "lint": "tsdx lint src test",
     "pub": "yarn build && np",
     "start": "tsdx watch",
     "test": "tsdx test --env=jsdom"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "tsdx lint src test"
     }
   },
   "dependencies": {

@@ -24,15 +24,12 @@ export const Overlay: React.FC<Props> = ({
   autoFocus,
 }) => {
   const portalRef = React.useRef(document.createElement('div'));
-  const { token, zIndex } = useOverlay(
-    invariantOverlayContext(portalRef.current),
-    {
-      debugName,
-      onClose,
-      canEscapeKeyClose,
-      canOutsideClickClose,
-    }
-  );
+  const { token, zIndex } = useOverlay(invariantOverlayContext(portalRef.current), {
+    debugName,
+    onClose,
+    canEscapeKeyClose,
+    canOutsideClickClose,
+  });
   usePortal({
     zIndex,
     autoFocus,

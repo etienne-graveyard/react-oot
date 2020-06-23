@@ -169,10 +169,8 @@ function createOverlayManager(): OverlayManager {
         return handle(index - 1);
       }
       if (updateRequested) {
-        const inPrev =
-          prevStack.find(layer => layer.token === item.token) === undefined;
-        const inCurrent =
-          stack.find(layer => layer.token === item.token) === undefined;
+        const inPrev = prevStack.find(layer => layer.token === item.token) === undefined;
+        const inCurrent = stack.find(layer => layer.token === item.token) === undefined;
         if (inPrev !== inCurrent) {
           // if the stack has changed and the overlay supposed to handle the change
           // has changed we ignore the click
@@ -202,8 +200,7 @@ function createOverlayManager(): OverlayManager {
         return;
       }
       const item = prevStack[index];
-      const isInsideClick =
-        target === item.container || item.container.contains(target as any);
+      const isInsideClick = target === item.container || item.container.contains(target as any);
       if (isInsideClick) {
         return;
       }
@@ -215,10 +212,8 @@ function createOverlayManager(): OverlayManager {
         return handle(index - 1);
       }
       if (updateRequested) {
-        const inPrev =
-          prevStack.find(layer => layer.token === item.token) === undefined;
-        const inCurrent =
-          stack.find(layer => layer.token === item.token) === undefined;
+        const inPrev = prevStack.find(layer => layer.token === item.token) === undefined;
+        const inCurrent = stack.find(layer => layer.token === item.token) === undefined;
         if (inPrev !== inCurrent) {
           // if the stack has changed and the overlay supposed to handle the change
           // has changed we ignore the click
