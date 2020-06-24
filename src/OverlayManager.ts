@@ -186,6 +186,15 @@ function createOverlayManager(): OverlayManager {
   }
 
   function dispatchDocumentClick(event: MouseEvent): void {
+    // delay document click to after react has handle click
+    // we do this to handle the case where the click would close a stack (with a setState)
+    // and we don't want the outside click to have action on that stack
+    Promise.resolve().then(() => {
+      handleDocumentClick(event);
+    });
+  }
+
+  function handleDocumentClick(event: MouseEvent): void {
     // document click is delayed with a setTimeout 0
     // so we use prevStack to ignore new overlays added by the click
     if (prevStack.length === 0) {
@@ -200,6 +209,10 @@ function createOverlayManager(): OverlayManager {
         return;
       }
       const item = prevStack[index];
+      const stillExist = document.contains(target as any);
+      if (stillExist === false) {
+        return;
+      }
       const isInsideClick = target === item.container || item.container.contains(target as any);
       if (isInsideClick) {
         return;
@@ -221,6 +234,7 @@ function createOverlayManager(): OverlayManager {
         }
       }
       onClose(event);
+      // if e.preventDefault() id stop the close event
       if (event.defaultPrevented === false) {
         return handle(index - 1);
       }

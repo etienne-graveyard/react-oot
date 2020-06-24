@@ -19,19 +19,14 @@ export const OverlayProvider: React.FC<Props> = ({ children }) => {
 
   const handleDocumentClick = React.useCallback(
     (event: MouseEvent) => {
-      // delay document click to after react has handle click
-      // we do this to handle the case where the click would close a stack (with a setState)
-      // and we don't want the outside click to have action on that stack
-      window.setTimeout(() => {
-        manager.dispatchDocumentClick(event);
-      }, 0);
+      manager.dispatchDocumentClick(event);
     },
     [manager]
   );
 
   React.useEffect(() => {
     document.addEventListener('keydown', handleKeydown);
-    document.addEventListener('click', handleDocumentClick);
+    document.addEventListener('click', handleDocumentClick, { capture: true });
 
     return () => {
       document.removeEventListener('keydown', handleKeydown);

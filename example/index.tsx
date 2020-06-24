@@ -18,10 +18,7 @@ const DynamicOverlay: React.FC<{ name: string }> = ({ name }) => {
   );
 };
 
-const ClosableOverlay: React.FC<{ debugName: string }> = ({
-  debugName,
-  children,
-}) => {
+const ClosableOverlay: React.FC<{ debugName: string }> = ({ debugName, children }) => {
   const [open, setOpen] = React.useState(true);
   const [escape, setEscape] = React.useState(true);
   const [onClose, setOnClose] = React.useState(true);
@@ -51,25 +48,21 @@ const ClosableOverlay: React.FC<{ debugName: string }> = ({
           style={{
             position: 'fixed',
             width: 300,
-            height: 100,
+            height: 130,
             boxSizing: 'border-box',
             background: 'white',
             border: '1px solid blue',
             right: 0,
-            bottom: zIndex * 10 - 100,
+            bottom: zIndex * 13 - 600,
             display: 'flex',
             flexDirection: 'column',
           }}
         >
-          <button onClick={() => setEscape(p => !p)}>
-            canEscapeKeyClose: {String(escape)}
-          </button>
+          <button onClick={() => setEscape(p => !p)}>canEscapeKeyClose: {String(escape)}</button>
           <button onClick={() => setOutside(p => !p)}>
             canOutsideClickClose: {String(outside)}
           </button>
-          <button onClick={() => setOnClose(p => !p)}>
-            onClose: {String(onClose)}
-          </button>
+          <button onClick={() => setOnClose(p => !p)}>onClose: {String(onClose)}</button>
           <button onClick={() => setPrevent(p => !p)}>
             preventDefault onClose: {String(prevent)}
           </button>
@@ -130,9 +123,60 @@ const OverlayDemo: React.FC = () => {
   );
 };
 
+const OverlayDemo2: React.FC = () => {
+  const [showButton1, setShowButton1] = React.useState(true);
+  const [showButton2, setShowButton2] = React.useState(true);
+  const [overlay, setOverlay] = React.useState(true);
+
+  return (
+    <div>
+      <h1>Overlay with disapearing button</h1>
+      {showButton2 && (
+        <button
+          onClick={() => {
+            setShowButton2(false);
+          }}
+        >
+          Hide Button
+        </button>
+      )}
+      {overlay && (
+        <Overlay canOutsideClickClose={true} onClose={() => setOverlay(false)}>
+          <div
+            style={{
+              position: 'fixed',
+              width: 300,
+              height: 100,
+              boxSizing: 'border-box',
+              background: 'white',
+              border: '1px solid blue',
+              right: 0,
+              bottom: 0,
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <h2>Overlay</h2>
+            {showButton1 && (
+              <button
+                onClick={() => {
+                  setShowButton1(false);
+                }}
+              >
+                Hide Button
+              </button>
+            )}
+          </div>
+        </Overlay>
+      )}
+    </div>
+  );
+};
+
 ReactDOM.render(
   <OverlayProvider>
     <OverlayDemo />
+    <OverlayDemo2 />
   </OverlayProvider>,
   document.getElementById('root')
 );
