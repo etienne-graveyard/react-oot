@@ -173,10 +173,29 @@ const OverlayDemo2: React.FC = () => {
   );
 };
 
+const ToggleDemo: React.FC = () => {
+  const [overlayVisible, setOverlayVisible] = React.useState(false);
+
+  console.log(overlayVisible);
+
+  return (
+    <div>
+      <h1>Toggle Demo</h1>
+      <button onClick={() => setOverlayVisible(p => !p)}>Toggle</button>
+      {overlayVisible && (
+        <Overlay onClose={() => setOverlayVisible(false)} canOutsideClickClose={true}>
+          Hello
+        </Overlay>
+      )}
+    </div>
+  );
+};
+
 ReactDOM.render(
   <OverlayProvider>
     <OverlayDemo />
     <OverlayDemo2 />
+    <ToggleDemo />
   </OverlayProvider>,
   document.getElementById('root')
 );

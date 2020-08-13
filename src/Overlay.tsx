@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { OverlayContext } from './OverlayContext';
 import { useOverlay } from './useOverlay';
 import { usePortal } from './usePortal';
-import { invariantOverlayContext } from './utils';
 
 interface Props {
   debugName?: string;
@@ -24,7 +23,7 @@ export const Overlay: React.FC<Props> = ({
   autoFocus,
 }) => {
   const portalRef = React.useRef(document.createElement('div'));
-  const { token, zIndex } = useOverlay(invariantOverlayContext(portalRef.current), {
+  const { token, zIndex } = useOverlay(portalRef.current, {
     debugName,
     onClose,
     canEscapeKeyClose,

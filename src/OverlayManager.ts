@@ -66,6 +66,8 @@ function createOverlayManager(): OverlayManager {
     canOutsideClickClose: boolean,
     onClose?: (event: MouseEvent | KeyboardEvent) => void
   ): Unregister {
+    console.log('register', current);
+
     const item: StackItem = {
       token: current,
       parent,
@@ -121,6 +123,7 @@ function createOverlayManager(): OverlayManager {
     }
 
     function unregister(): void {
+      console.log('unregister', current);
       let deleteQueue = [current];
       let nextDeleteQueue: Array<OverlayToken> = [];
       function onItem(item: StackItem): boolean {
@@ -189,12 +192,13 @@ function createOverlayManager(): OverlayManager {
     // delay document click to after react has handle click
     // we do this to handle the case where the click would close a stack (with a setState)
     // and we don't want the outside click to have action on that stack
-    Promise.resolve().then(() => {
+    window.setTimeout(() => {
       handleDocumentClick(event);
-    });
+    }, 0);
   }
 
   function handleDocumentClick(event: MouseEvent): void {
+    console.log('handleDocumentClick');
     // document click is delayed with a setTimeout 0
     // so we use prevStack to ignore new overlays added by the click
     if (prevStack.length === 0) {
@@ -209,6 +213,7 @@ function createOverlayManager(): OverlayManager {
         return;
       }
       const item = prevStack[index];
+      // const itemRemoved = stack.find(i => i.token === item.token);
       const stillExist = document.contains(target as any);
       if (stillExist === false) {
         return;
