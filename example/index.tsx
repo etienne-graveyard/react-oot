@@ -176,8 +176,6 @@ const OverlayDemo2: React.FC = () => {
 const ToggleDemo: React.FC = () => {
   const [overlayVisible, setOverlayVisible] = React.useState(false);
 
-  console.log(overlayVisible);
-
   return (
     <div>
       <h1>Toggle Demo</h1>

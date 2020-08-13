@@ -66,8 +66,6 @@ function createOverlayManager(): OverlayManager {
     canOutsideClickClose: boolean,
     onClose?: (event: MouseEvent | KeyboardEvent) => void
   ): Unregister {
-    console.log('register', current);
-
     const item: StackItem = {
       token: current,
       parent,
@@ -123,7 +121,6 @@ function createOverlayManager(): OverlayManager {
     }
 
     function unregister(): void {
-      console.log('unregister', current);
       let deleteQueue = [current];
       let nextDeleteQueue: Array<OverlayToken> = [];
       function onItem(item: StackItem): boolean {
@@ -198,7 +195,6 @@ function createOverlayManager(): OverlayManager {
   }
 
   function handleDocumentClick(event: MouseEvent): void {
-    console.log('handleDocumentClick');
     // document click is delayed with a setTimeout 0
     // so we use prevStack to ignore new overlays added by the click
     if (prevStack.length === 0) {
